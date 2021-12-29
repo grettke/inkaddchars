@@ -30,14 +30,16 @@ class AddStrings(EffectExtension):
                        help="Font size in points.")
 
     def effect(self):
-        data = self.options.strings.split(',')
-        group = self.svg.get_current_layer().add(
-            Group.new(self.svg.get_unique_id('AddStrings:')))
+        o = self.options
+        data = o.strings.split(',')
+        s = self.svg
+        group = s.get_current_layer().add(
+            Group.new(s.get_unique_id('AddStrings:')))
         for index,datum in enumerate(data):
             textelement = group.add(TextElement())
             textelement.style = Style()
-            textelement.style["font-size"] = self.svg.unittouu(
-                str(self.options.fontsize) + "pt")
+            textelement.style["font-size"] = s.unittouu(
+                str(o.fontsize) + "pt")
             textelement.text = datum
 
 
