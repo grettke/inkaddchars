@@ -25,10 +25,13 @@ class AddChars(EffectExtension):
         return
 
     def effect(self):
+        chars = ['A', 'B']
         layer = self.svg.get_current_layer()
-        element = TextElement('0', '0')
-        element.text = 'Hello, world.'
-        layer.add(element)
+        for idx,text in enumerate(chars):
+            y_idx = idx * 5
+            char = TextElement('0', str(y_idx))
+            char.text = text
+            layer.add(char)
 
 if __name__ == '__main__':
     AddChars().run()
