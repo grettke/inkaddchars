@@ -13,11 +13,11 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-from inkex import EffectExtension, Group, Style, TextElement
+from inkex import AbortExtension, EffectExtension, Group, Style, TextElement
 
 
 #
-# Add multiple characters.
+# Add multiple strings.
 #
 class AddStrings(EffectExtension):
 
@@ -30,9 +30,30 @@ class AddStrings(EffectExtension):
                        help="Font size in points.")
 
     def effect(self):
+        # Aliases
         o = self.options
-        data = o.strings.split(',')
         s = self.svg
+
+        # Objects
+        template = s.selected.first()
+        data = o.strings.split(',')
+
+        # Precondition Checks
+        #
+        # Is something selected?
+        if template is None:
+            raise AbortExtension(
+                "Would you please select a TextElement "
+                "to serve as the template for inserting "
+                "strings and rerun me?")
+        # Is it a TextElement?
+        if not isinstance(template, TextElement):
+            raise AbortExtension(
+                "It looks like you selected something, "
+                "but it isn't a TextElement. Would you "
+                "please select a TextElement object and "
+                "rerun me?")
+
         group = s.get_current_layer().add(
             Group.new(s.get_unique_id('AddStrings:')))
         for index,datum in enumerate(data):
