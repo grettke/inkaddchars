@@ -19,7 +19,7 @@ from inkex import EffectExtension, Group, Style, TextElement
 #
 # Add multiple characters.
 #
-class AddChars(EffectExtension):
+class AddStrings(EffectExtension):
 
     def add_arguments(self, p):
         # The INX file is the authoritative source of this information:
@@ -30,9 +30,9 @@ class AddChars(EffectExtension):
                        help="Font size in points.")
 
     def effect(self):
-        data = self.options.characters.split(',')
+        data = self.options.strings.split(',')
         group = self.svg.get_current_layer().add(
-            Group.new(self.svg.get_unique_id('AddChars:')))
+            Group.new(self.svg.get_unique_id('AddStrings:')))
         for index,datum in enumerate(data):
             textelement = group.add(TextElement())
             textelement.style = Style()
@@ -42,4 +42,4 @@ class AddChars(EffectExtension):
 
 
 if __name__ == '__main__':
-    AddChars().run()
+    AddStrings().run()
