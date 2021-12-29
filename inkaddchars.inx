@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!--
+        Copyright (C) 2021 Grant Rettke <grant@wisdomandwonder.com>
+
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation, either version 3 of the License, or
+        (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+        -->
+<inkscape-extension
+        xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+
+    <name>Add Characters.</name>
+    <id>com.wisdomandwonder.render.addchars</id>
+
+    <effect needs-live-preview="false">
+        <object-type>all</object-type>
+        <effects-menu>
+            <submenu name="Text"/>
+        </effects-menu>
+    </effect>
+
+    <script>
+        <command location="inx" interpreter="python">inkaddchars.py</command>
+    </script>
+
+</inkscape-extension>
