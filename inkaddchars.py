@@ -13,7 +13,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-from inkex import EffectExtension, TextElement
+from inkex import EffectExtension, Group, Style, TextElement
 
 
 #
@@ -22,16 +22,24 @@ from inkex import EffectExtension, TextElement
 class AddChars(EffectExtension):
 
     def add_arguments(self, p):
-        return
+        # The INX file is the authoritative source of this information:
+        # keep *that* current /then/ update it _here_.
+        p.add_argument("--characters", type=str, default="A,B,C",
+                       help="Comma-separated list of chars.")
+        p.add_argument("--fontsize", type=int, default=12,
+                       help="Font size in points.")
 
     def effect(self):
-        chars = ['A', 'B']
-        layer = self.svg.get_current_layer()
-        for idx,text in enumerate(chars):
-            y_idx = idx * 5
-            char = TextElement('0', str(y_idx))
-            char.text = text
-            layer.add(char)
+        data = self.options.characters.split(',')
+        group = self.svg.get_current_layer().add(
+            Group.new(self.svg.get_unique_id('AddChars:')))
+        for index,datum in enumerate(data):
+            textelement = group.add(TextElement())
+            textelement.style = Style()
+            textelement.style["font-size"] = self.svg.unittouu(
+                str(self.options.fontsize) + "pt")
+            textelement.text = datum
+
 
 if __name__ == '__main__':
     AddChars().run()
