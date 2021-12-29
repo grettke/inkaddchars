@@ -1,12 +1,12 @@
-# inkbxm
+# inkaddstrings
 
-Add multiple characters.
+Add multiple strings.
 
 # Coding
 
 ```bash
-rm -rf inkaddchars
-git clone git@github.com:grettke/inkaddchars.git
+rm -rf inkaddstrings
+git clone git@github.com:grettke/inkaddstrings.git
 cd -
 ````
 
@@ -16,9 +16,9 @@ cd -
 
 ```bash
 cd /Applications/Inkscape.app/Contents/Resources/share/inkscape/extensions
-rm inkaddchars.inx
-rm inkaddchars.py
-ln -s ~/src/inkaddchars/inkaddchars.inx inkaddchars.inx
-ln -s ~/src/inkaddchars/inkaddchars.py inkaddchars.py
+rm inkaddstrings.inx
+rm inkaddstrings.py
+ln -s ~/src/inkaddstrings/inkaddstrings.inx inkaddstrings.inx
+ln -s ~/src/inkaddstrings/inkaddstrings.py inkaddstrings.py
 cd -
 ```

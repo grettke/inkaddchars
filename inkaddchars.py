@@ -24,8 +24,8 @@ class AddChars(EffectExtension):
     def add_arguments(self, p):
         # The INX file is the authoritative source of this information:
         # keep *that* current /then/ update it _here_.
-        p.add_argument("--characters", type=str, default="A,B,C",
-                       help="Comma-separated list of chars.")
+        p.add_argument("--strings", type=str, default="AB,CD,EF",
+                       help="Comma-separated list of strings.")
         p.add_argument("--fontsize", type=int, default=12,
                        help="Font size in points.")
 

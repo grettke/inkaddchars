@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/inkaddchars.iml" filepath="$PROJECT_DIR$/.idea/inkaddchars.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/inkaddstrings.iml" filepath="$PROJECT_DIR$/.idea/inkaddstrings.iml" />
     </modules>
   </component>
 </project>

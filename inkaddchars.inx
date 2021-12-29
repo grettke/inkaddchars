@@ -15,15 +15,15 @@ GNU General Public License for more details.
 <inkscape-extension
         xmlns="http://www.inkscape.org/namespace/inkscape/extension">
 
-    <name>Add Characters.</name>
-    <id>com.wisdomandwonder.render.addchars</id>
+    <name>Add Strings.</name>
+    <id>com.wisdomandwonder.render.addstrings</id>
 
-    <param type="string" name="characters"
-           gui-text="Comma-separated list of chars:"
-           gui-description="Chars are inserted individually into document."
-    >A,B,C
+    <param type="string" name="strings"
+           gui-text="Comma-separated list of strings:"
+           gui-description="Strings are inserted individually into the document."
+    >AB,CD,EF
     </param>
-    <param type="int" name="fontsize" gui-text="Font size in points?"
+    <param type="int" name="fontsize" gui-text="Font size in points:"
            min="1"
            max="1000">12
     </param>
@@ -36,7 +36,7 @@ GNU General Public License for more details.
     </effect>
 
     <script>
-        <command location="inx" interpreter="python">inkaddchars.py</command>
+        <command location="inx" interpreter="python">inkaddstrings.py</command>
     </script>
 
 </inkscape-extension>
