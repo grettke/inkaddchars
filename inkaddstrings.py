@@ -13,7 +13,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-from inkex import AbortExtension, EffectExtension, Group, Style, TextElement
+from inkex import AbortExtension, EffectExtension, Group, TextElement, Tspan
 
 
 #
@@ -26,8 +26,6 @@ class AddStrings(EffectExtension):
         # keep *that* current /then/ update it _here_.
         p.add_argument("--strings", type=str, default="AB,CD,EF",
                        help="Comma-separated list of strings.")
-        p.add_argument("--fontsize", type=int, default=12,
-                       help="Font size in points.")
 
     def effect(self):
         # Aliases
@@ -36,7 +34,7 @@ class AddStrings(EffectExtension):
 
         # Objects
         template = s.selected.first()
-        data = o.strings.split(',')
+        strings = o.strings.split(',')
 
         # Precondition Checks
         #
@@ -54,14 +52,16 @@ class AddStrings(EffectExtension):
                 "please select a TextElement object and "
                 "rerun me?")
 
+        # Keep the layer tidy by adding the duplicates to a new
+        # group on each run.
         group = s.get_current_layer().add(
             Group.new(s.get_unique_id('AddStrings:')))
-        for index,datum in enumerate(data):
-            textelement = group.add(TextElement())
-            textelement.style = Style()
-            textelement.style["font-size"] = s.unittouu(
-                str(o.fontsize) + "pt")
-            textelement.text = datum
+
+        # Functionality
+        for index, string in enumerate(strings):
+            element = template.copy()
+            element.text = string
+            group.add(element)
 
 
 if __name__ == '__main__':

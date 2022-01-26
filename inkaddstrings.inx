@@ -23,10 +23,6 @@ GNU General Public License for more details.
            gui-description="Strings are inserted individually into the document."
     >AB,CD,EF
     </param>
-    <param type="int" name="fontsize" gui-text="Font size in points:"
-           min="1"
-           max="1000">12
-    </param>
 
     <effect needs-live-preview="false">
         <object-type>all</object-type>
